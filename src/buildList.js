@@ -4,16 +4,20 @@ const ropsten = require('./tokens/ropsten.json');
 const rinkeby = require('./tokens/rinkeby.json');
 const goerli = require('./tokens/goerli.json');
 const kovan = require('./tokens/kovan.json');
+const rskMainnet = require('./tokens/rsk-mainnet.json');
+const rskTestnet = require('./tokens/rsk-testnet.json');
+
+const LIST_NAME = ' Multiswap List'
 
 module.exports = function buildList() {
   const parsed = version.split('.');
   return {
-    'name': 'Uniswap Default List',
+    'name': LIST_NAME,
     'timestamp': (new Date().toISOString()),
     'version': {
-      'major': +parsed[ 0 ],
-      'minor': +parsed[ 1 ],
-      'patch': +parsed[ 2 ]
+      'major': +parsed[0],
+      'minor': +parsed[1],
+      'patch': +parsed[2]
     },
     'tags': {},
     'logoURI': 'ipfs://QmNa8mQkrNKp1WEEeGjFezDmDeodkWRevGFN8JCV7b4Xir',
@@ -26,7 +30,9 @@ module.exports = function buildList() {
       ...ropsten,
       ...goerli,
       ...kovan,
-      ...rinkeby
+      ...rinkeby,
+      ...rskMainnet,
+      ...rskTestnet
     ]
       // sort them by symbol for easy readability
       .sort((t1, t2) => {
